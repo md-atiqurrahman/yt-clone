@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
 const API = 'AIzaSyAjwWnDdeHInz9TS1LTyG3loOrCLGyafYs';
+
 //for specific channel
-const channelId = 'UCwppdrjsBPAZg5_cUwQjfMQ';
-let fetchUrl = `https://www.googleapis.com/youtube/v3/playlists?key=${API}&channelId=${channelId}&part=snippet,id,contentDetails&order=date&maxResults=10`;
+const channelId = 'UCIsSPTBMJXYL-JtVAr1DcFg';
+const url = `https://www.googleapis.com/youtube/v3/playlists?key=${API}&channelId=${channelId}&part=snippet,id,contentDetails&order=date&maxResults=10`;
 
 const YtPlaylists = () => {
     const [allVideos, setAllVideos] = useState([])
 
     useEffect(() => {
-        fetch(fetchUrl).then(res => res.json()).then(data => {
+        fetch(url).then(res => res.json()).then(data => {
             console.log(data)
             const result = data.items.map(obj => ({
                 ...obj,

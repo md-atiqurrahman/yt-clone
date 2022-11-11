@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 const API = 'AIzaSyAjwWnDdeHInz9TS1LTyG3loOrCLGyafYs';
 //for specific channel
-const channelId = 'UCwppdrjsBPAZg5_cUwQjfMQ';
-let fetchUrl = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1`;
+const channelId = 'UCIsSPTBMJXYL-JtVAr1DcFg';
+const url = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1`;
 
 
 // //for random videos
@@ -13,7 +13,7 @@ const YtVideos = () => {
     const [allVideos, setAllVideos] = useState([])
 
     useEffect(() =>{
-        fetch(fetchUrl).then(res => res.json()).then(data => {
+        fetch(url).then(res => res.json()).then(data => {
             const result = data.items.map(obj => ({
                 ...obj,
                 videoUrl: "https://www.youtube.com/embed/"+obj.id.videoId
